@@ -43,7 +43,7 @@ public class PersonController {
         return p;
     }
 
-    @PostMapping(value = "/persons/{id}")
+    @PostMapping(value = "/persons")
     public Person addPerson(@Valid @RequestBody Person p) {
         return personService.save(p);
     }
