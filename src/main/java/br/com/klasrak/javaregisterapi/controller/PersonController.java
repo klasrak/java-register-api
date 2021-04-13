@@ -1,5 +1,6 @@
 package br.com.klasrak.javaregisterapi.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -53,12 +54,21 @@ public class PersonController {
         Person p = personService.findById(id)
                 .orElseThrow(() -> new PersonNotFoundException("Person with id " + id + " is Not Found"));
 
-        p.setName(newP.getName());
-        p.setGender(newP.getGender());
-        p.setBirthDate(newP.getBirthDate());
-        p.setHometown(newP.getHometown());
-        p.setNationality(newP.getNationality());
-        p.setCpf(newP.getCpf());
+        String name = newP.getName() == null ? p.getName() : newP.getName();
+        String gender = newP.getGender() == null ? p.getGender() : newP.getGender();
+        String email = newP.getEmail() == null ? p.getEmail() : newP.getEmail();
+        LocalDate birthdate = newP.getBirthDate() == null ? p.getBirthDate() : newP.getBirthDate();
+        String hometown = newP.getHometown() == null ? p.getHometown() : newP.getHometown();
+        String nationality = newP.getNationality() == null ? p.getNationality() : newP.getNationality();
+        String cpf = newP.getCpf() == null ? p.getCpf() : newP.getCpf();
+
+        p.setName(name);
+        p.setGender(gender);
+        p.setEmail(email);
+        p.setBirthDate(birthdate);
+        p.setHometown(hometown);
+        p.setNationality(nationality);
+        p.setCpf(cpf);
 
         return personService.save(p);
     }
