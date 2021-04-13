@@ -51,12 +51,3 @@ public class Person implements Serializable {
     private String cpf;
 
 }
-
-// • Nome - obrigatório
-// • Sexo
-// • E-mail - não obrigatório, deve ser validado caso preenchido
-// • Data de Nascimento - obrigatório, deve ser validada
-// • Naturalidade
-// • Nacionalidade
-// • CPF - obrigatório, deve ser validado (formato e não pode haver dois
-// cadastros com mesmo cpf)
