@@ -61,6 +61,8 @@ java-register-api | 2021-04-13 05:07:30.244  INFO 1 --- [nio-9000-exec-2] o.s.we
 
 ## Getting started
 
+**If you use [Postman](https://www.postman.com/), you can import the schema from [here](https://github.com/klasrak/java-register-api/blob/master/java-register-api.postman_collection.json).**
+
 All routes require the user to be authenticated with basic auth:
 
 **User**: admin <br/>
