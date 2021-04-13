@@ -39,6 +39,8 @@ public class PersonController {
     public Person getPersonById(@PathVariable("id") @Min(1) int id) {
         Person p = personService.findById(id)
                 .orElseThrow(() -> new PersonNotFoundException("Person with id " + id + " is Not Found"));
+
+        return p;
     }
 
     @PostMapping(value = "/persons/{id}")

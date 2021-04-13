@@ -3,6 +3,7 @@ package br.com.klasrak.javaregisterapi.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,16 +36,20 @@ public class Person implements Serializable {
     @NotEmpty(message = "Name is required")
     private String name;
 
+    @Column(nullable = true, name = "gender")
     private String gender;
 
-    @NotEmpty(message = "E-mail is required")
-    private Email email;
+    @Column(nullable = true, name = "email")
+    @Email(message = "E-mail should be valid")
+    private String email;
 
     @NotEmpty(message = "Birt date is required")
     private LocalDateTime birthDate;
 
+    @Column(nullable = true, name = "hometown")
     private String hometown;
 
+    @Column(nullable = true, name = "nationality")
     private String nationality;
 
     @NotEmpty(message = "CPF is required")
