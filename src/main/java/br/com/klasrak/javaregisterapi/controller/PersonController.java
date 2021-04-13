@@ -19,11 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.klasrak.javaregisterapi.exceptions.PersonNotFoundException;
 import br.com.klasrak.javaregisterapi.models.Person;
 import br.com.klasrak.javaregisterapi.services.PersonService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 @RestController
-@Api(value = "Person Controller")
 @RequestMapping("/api")
 public class PersonController {
 
@@ -34,13 +31,11 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @ApiOperation(value = "Get all persons from database")
     @GetMapping(value = "/persons")
     public List<Person> getAllPersons() {
         return personService.getAllPersons();
     }
 
-    @ApiOperation(value = "Get person by ID")
     @GetMapping(value = "/persons/{id}")
     public Person getPersonById(@PathVariable("id") @Min(1) int id) {
         Person p = personService.findById(id)
@@ -49,13 +44,11 @@ public class PersonController {
         return p;
     }
 
-    @ApiOperation(value = "Create person")
     @PostMapping(value = "/persons")
     public Person addPerson(@Valid @RequestBody Person p) {
         return personService.save(p);
     }
 
-    @ApiOperation(value = "Update person")
     @PutMapping(value = "persons/{id}")
     public Person updatePerson(@PathVariable("id") @Min(1) int id, @Valid @RequestBody Person newP) {
         Person p = personService.findById(id)
@@ -80,7 +73,6 @@ public class PersonController {
         return personService.save(p);
     }
 
-    @ApiOperation(value = "Delete person")
     @DeleteMapping(value = "/persons/{id}")
     public String deletePerson(@PathVariable("id") @Min(1) int id) {
         Person p = personService.findById(id)
